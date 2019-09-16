@@ -12,17 +12,34 @@
     </div>
     <script>
         var button = document.querySelector('button');
-        button.onclick = function () {
-            addBox();
-        }
+        var container = document.querySelector('#app');
+        
         function addBox() {
-            var container = document.querySelector('#app');
             var divElement = document.createElement('div');
             divElement.style.width = '100px';
             divElement.style.height = '100px';
             divElement.style.backgroundColor = 'red';
             container.appendChild(divElement);
         }
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random()*16)];
+            }
+            return color;
+        }
+        
+        button.onclick = function () {
+            addBox();
+        }
+
+        function changeBackgroundColor() {
+            this.style.backgroundColor = getRandomColor();
+        }
+
+        container.addEventListener('mouseover', changeBackgroundColor);
     </script>
 </body>
 </html>
