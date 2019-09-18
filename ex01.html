@@ -13,9 +13,9 @@
     <script>
         var button = document.querySelector('button');
         var container = document.querySelector('#app');
+        var divElement = document.createElement('div');
         
         function addBox() {
-            var divElement = document.createElement('div');
             divElement.style.width = '100px';
             divElement.style.height = '100px';
             divElement.style.backgroundColor = 'red';
@@ -36,10 +36,17 @@
         }
 
         function changeBackgroundColor() {
-            this.style.backgroundColor = getRandomColor();
+            divElement.style.backgroundColor = getRandomColor();
         }
 
-        container.addEventListener('mouseover', changeBackgroundColor);
-    </script>
+        function hasDiv() {
+            if(container.contains(divElement)) {
+                changeBackgroundColor();
+            }
+        }
+
+        container.addEventListener('mouseover', hasDiv);
+
+        </script>
 </body>
 </html>
